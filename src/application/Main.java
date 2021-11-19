@@ -10,6 +10,8 @@ import java.awt.*;
 
 public class Main extends Application {
 
+    private static Scene mainScene;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/MainView.fxml"));
@@ -19,12 +21,14 @@ public class Main extends Application {
         scrollPane.setFitToWidth(true);
 
         primaryStage.setTitle("Hello World");
-        Scene mainScene = new Scene(scrollPane);
+        mainScene = new Scene(scrollPane);
         primaryStage.setScene(mainScene);
         primaryStage.show();
     }
 
-
+    public static Scene getMainScene(){
+        return mainScene;
+    }
     public static void main(String[] args) {
         launch(args);
     }
