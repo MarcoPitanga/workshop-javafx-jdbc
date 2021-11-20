@@ -78,6 +78,7 @@ public class DepartmentListController implements Initializable {
         List<Department> list = service.findAll();
         obsList = FXCollections.observableArrayList(list);
         tableViewDepartment.setItems(obsList);
+        tableViewDepartment.getSortOrder().add(tableColumnId);
     }
 
     private void createDialogForm(Department obj, String absoluteName, Stage parentStage){
@@ -87,6 +88,7 @@ public class DepartmentListController implements Initializable {
 
             DepartmentFormController controller = loader.getController();
             controller.setDepartment(obj);
+            controller.setDepartmentService(new DepartmentService());
             controller.updateFormData();
 
             Stage dialogStage = new Stage();
